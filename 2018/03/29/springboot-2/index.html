@@ -9,7 +9,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
-    <title>Hello World · Suruns&#39;s Studio</title>
+    <title>IDEA创建SpringBoot项目（二） · Suruns&#39;s Studio</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -191,7 +191,7 @@
                 <a href="/" >Suruns&#39;s Studio.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">Hello World</a>
+                <a href="#" class="post-name">IDEA创建SpringBoot项目（二）</a>
             </div>
     </div>
     
@@ -223,7 +223,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Hello World
+            IDEA创建SpringBoot项目（二）
             <!-- 404 -->
             
         </h1>
@@ -241,13 +241,17 @@ height:50vh;
             
                 <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-tags = "test">test</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags = "springboot">springboot</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "java">java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "web">web</a>
     
 </div>
             
             <div class="post-intro-meta">
                 <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                <span class="post-intro-time">2018/03/24</span>
+                <span class="post-intro-time">2018/03/29</span>
                 
                 <span id="busuanzi_container_page_pv" class="busuanzi-pv">
                     <span class="iconfont-archer">&#xe602;</span>
@@ -353,15 +357,11 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>上一篇讲了如何使用IDEA创建springboot项目，这里来讲一下如何添加数据库操作</p>
+<h3 id="添加数据库连接"><a href="#添加数据库连接" class="headerlink" title="添加数据库连接"></a>添加数据库连接</h3><p>打开application.properties文件，添加如下字段：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test.datasource.username=root  #数据库用户名</span><br><span class="line">test.datasource.password=123456 #数据库密码</span><br><span class="line">test.datasource.driverClassName=com.mysql.jdbc.Driver #数据库驱动</span><br><span class="line">test.datasource.url=jdbc\:mysql\://localhost\:3306/test?useUnicode=true&amp;useSSL=true#数据库地址</span><br></pre></td></tr></table></figure><br>我们数据库框架选择的springdatajpa是一款orm框架（自己百度）,他可以帮我们创建数据表（是表不是数据库，数据库还是要自己创建），在配置文件添加如下配置即可：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">spring.jpa.hibernate.ddl-auto=update #第一次创建表改为create之后要换成update</span><br><span class="line">spring.jpa.show-sql=true #打印sql语句</span><br></pre></td></tr></table></figure></p>
+<h3 id="配置数据库连接池"><a href="#配置数据库连接池" class="headerlink" title="配置数据库连接池"></a>配置数据库连接池</h3><p>创建一个Java文件，填入如下代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span>  <span class="comment">//配置文件注解 springboot会自动扫描此文件</span></span><br><span class="line">   <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DataSourceConfig</span> </span>&#123;</span><br><span class="line">       <span class="meta">@Autowired</span> <span class="comment">//注入spplication.properties文件属性</span></span><br><span class="line">       <span class="keyword">private</span> Environment env;</span><br><span class="line">       <span class="comment">/**</span></span><br><span class="line"><span class="comment">        * 设置Druid数据库连接池.</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">       <span class="meta">@Bean</span>(name = <span class="string">"masterDataSource"</span>) <span class="comment">//注入</span></span><br><span class="line">       <span class="meta">@Qualifier</span>(<span class="string">"masterDataSource"</span>) <span class="comment">//若是不配置多数据源，怎不需要这个和下面的注解</span></span><br><span class="line">       <span class="meta">@Primary</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> DataSource <span class="title">masterDataSource</span><span class="params">()</span> </span>&#123;</span><br><span class="line">           <span class="keyword">return</span> getDataSource(<span class="string">"test"</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="function"><span class="keyword">private</span> DruidDataSource <span class="title">getDataSource</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">           DruidDataSource dataSource = <span class="keyword">new</span> DruidDataSource();</span><br><span class="line">           dataSource.setUrl(env.getProperty(name+<span class="string">".datasource.url"</span>));</span><br><span class="line">           dataSource.setUsername(env.getProperty(name+<span class="string">".datasource.username"</span>));<span class="comment">//用户名</span></span><br><span class="line">           dataSource.setPassword(env.getProperty(name+<span class="string">".datasource.password"</span>));<span class="comment">//密码</span></span><br><span class="line">           dataSource.setDriverClassName(env.getProperty(name+<span class="string">".datasource.driver-class-name"</span>));</span><br><span class="line">           dataSource.setInitialSize(<span class="number">2</span>);<span class="comment">//初始化时建立物理连接的个数</span></span><br><span class="line">           dataSource.setMaxActive(<span class="number">20</span>);<span class="comment">//最大连接池数量</span></span><br><span class="line">           dataSource.setMinIdle(<span class="number">0</span>);<span class="comment">//最小连接池数量</span></span><br><span class="line">           dataSource.setMaxWait(<span class="number">60000</span>);<span class="comment">//获取连接时最大等待时间，单位毫秒。</span></span><br><span class="line">           dataSource.setValidationQuery(<span class="string">"SELECT 1"</span>);<span class="comment">//用来检测连接是否有效的sql</span></span><br><span class="line">           dataSource.setTestOnBorrow(<span class="keyword">false</span>);<span class="comment">//申请连接时执行validationQuery检测连接是否有效</span></span><br><span class="line">           dataSource.setTestWhileIdle(<span class="keyword">true</span>);<span class="comment">//建议配置为true，不影响性能，并且保证安全性。</span></span><br><span class="line">           dataSource.setPoolPreparedStatements(<span class="keyword">false</span>);<span class="comment">//是否缓存preparedStatement，也就是PSCache</span></span><br><span class="line">           <span class="keyword">return</span> dataSource;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="配置springdatajpa数据源"><a href="#配置springdatajpa数据源" class="headerlink" title="配置springdatajpa数据源"></a>配置springdatajpa数据源</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableTransactionManagement</span></span><br><span class="line"><span class="meta">@EnableJpaRepositories</span>(</span><br><span class="line">        entityManagerFactoryRef=<span class="string">"entityManagerFactorySecondary"</span>, <span class="comment">//实体仓库管理，和下面对应</span></span><br><span class="line">        transactionManagerRef=<span class="string">"transactionManagerSecondary"</span>, <span class="comment">//事务管理，和下面对应</span></span><br><span class="line">        basePackages= &#123; <span class="string">"com.suruns.demo.dao"</span> &#125;) <span class="comment">//dao包位置</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RepositoryConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> JpaProperties jpaProperties;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Autowired</span>  <span class="comment">//注入前面创建的数据源</span></span><br><span class="line">    <span class="meta">@Qualifier</span>(<span class="string">"masterDataSource"</span>)</span><br><span class="line">    <span class="keyword">private</span> DataSource masterDataSource;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Bean</span>(name = <span class="string">"entityManagerSecondary"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> EntityManager <span class="title">entityManager</span><span class="params">(EntityManagerFactoryBuilder builder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> entityManagerFactorySecondary(builder).getObject().createEntityManager();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Bean</span>(name = <span class="string">"entityManagerFactorySecondary"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> LocalContainerEntityManagerFactoryBean <span class="title">entityManagerFactorySecondary</span> <span class="params">(EntityManagerFactoryBuilder builder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> builder</span><br><span class="line">                .dataSource(masterDataSource)</span><br><span class="line">                .packages(<span class="string">"com.suruns.demo.model"</span>) <span class="comment">//实体类位置</span></span><br><span class="line">                .persistenceUnit(<span class="string">"secondaryPersistenceUnit"</span>)</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Bean</span>(name = <span class="string">"transactionManagerSecondary"</span>)</span><br><span class="line">    <span class="function">PlatformTransactionManager <span class="title">transactionManagerSecondary</span><span class="params">(EntityManagerFactoryBuilder builder)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> JpaTransactionManager(entityManagerFactorySecondary(builder).getObject());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>至此，springboot数据库配置就完成了，下节将讲编写dao，service，controller<br>参考：<a href="http://tengj.top/2017/04/23/springboot9/" target="_blank" rel="noopener">http://tengj.top/2017/04/23/springboot9/</a></p>
 
     </article>
     <!-- 前后页  -->
@@ -369,12 +369,17 @@ height:50vh;
         <li class="next">
             
                 <div class="nextSlogan">Next Post</div>
-                <a href= "/2018/03/24/share/" title= 分享 >
-                    <div class="nextTitle">分享</div>
+                <a href= "/2018/03/29/springboot-3/" title= IDEA创建SpringBoot项目（三） >
+                    <div class="nextTitle">IDEA创建SpringBoot项目（三）</div>
                 </a>
             
         </li>
         <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href= "/2018/03/28/springboot/" title= IDEA创建SpringBoot项目（一） >
+                    <div class="prevTitle">IDEA创建SpringBoot项目（一）</div>
+                </a>
             
         </li>
     </ul>
@@ -389,7 +394,7 @@ height:50vh;
 <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
     var gitment = new Gitment({
-        // id: "Hello World", // 可选。默认为 location.href
+        // id: "IDEA创建SpringBoot项目（二）", // 可选。默认为 location.href
         owner: 'suruns',
         repo: 'blog_comments',
         oauth: {
@@ -496,7 +501,7 @@ top:50vh;
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#添加数据库连接"><span class="toc-number">1.</span> <span class="toc-text">添加数据库连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置数据库连接池"><span class="toc-number">2.</span> <span class="toc-text">配置数据库连接池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置springdatajpa数据源"><span class="toc-number">3.</span> <span class="toc-text">配置springdatajpa数据源</span></a></li></ol>
     </div>
     
     <div class="back-top iconfont-archer">&#xe639;</div>

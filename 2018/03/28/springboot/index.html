@@ -9,7 +9,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
-    <title>IDEA创建SpringBoot项目 · Suruns&#39;s Studio</title>
+    <title>IDEA创建SpringBoot项目（一） · Suruns&#39;s Studio</title>
     <style type="text/css">
     @font-face {
         font-family: 'Oswald-Regular';
@@ -191,7 +191,7 @@
                 <a href="/" >Suruns&#39;s Studio.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">IDEA创建SpringBoot项目</a>
+                <a href="#" class="post-name">IDEA创建SpringBoot项目（一）</a>
             </div>
     </div>
     
@@ -223,7 +223,7 @@ height:50vh;
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            IDEA创建SpringBoot项目
+            IDEA创建SpringBoot项目（一）
             <!-- 404 -->
             
         </h1>
@@ -357,99 +357,24 @@ height:50vh;
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <!-- sadasld -->
-<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><h3 id="创建工程"><a href="#创建工程" class="headerlink" title="创建工程"></a>创建工程</h3><p>在IDEA左上角选择new project，进入如下界面，选择spring initializr和jdk</p>
+        <h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><h3 id="创建工程"><a href="#创建工程" class="headerlink" title="创建工程"></a>创建工程</h3><p>在IDEA左上角选择new project，进入如下界面，选择spring initializr和jdk</p>
 <img src="/2018/03/28/springboot/step_1.jpg" width="500">
 <h3 id="配置maven"><a href="#配置maven" class="headerlink" title="配置maven"></a>配置maven</h3><p>点击next后进入maven相关配置界面<br><img src="/2018/03/28/springboot/step_2.jpg" width="500"></p>
-<h3 id="选择组件"><a href="#选择组件" class="headerlink" title="选择组件"></a>选择组件</h3><p>  配置好maven后，进入springboot组件选择界面，推荐选择lombok,web,thymeleaf,jpa,mysql,lombok可以减少代码编写，但是需要下载idea插件，否则会报错，web为springboot的web相关组件，thymeleaf为html模版组件，mysql和jpa是数据库orm组件，当然也可以不在这里选，等进入项目后在pom文件自己配置。</p>
-<pre><code>需要注意的是mysql组件选择后，springboot会开启数据源扫面功能，若果你选了mysql有没有配置数据库连接，启动工程会报错，
-所以这里可以先不选mysql和jpa
-</code></pre><img src="/2018/03/28/springboot/step_3.jpg" width="500">
+<h3 id="选择组件"><a href="#选择组件" class="headerlink" title="选择组件"></a>选择组件</h3><p>配置好maven后，进入springboot组件选择界面，推荐选择lombok,web,thymeleaf,jpa,mysql,lombok可以减少代码编写，web为springboot的web相关组件，thymeleaf为html模版组件，mysql和jpa是数据库orm组件，当然也可以不在这里选，等进入项目后在pom文件自己配置。</p>
+<p><font color="red" size="3">注意：使用lombok的话要先下载lombok插件，在idea里面就可以下载，如果不下载无法使用lombok</font></p>
+<p><font color="red" size="3">注意：需要注意的是mysql组件选择后，springboot会开启数据源扫面功能，若果你选了mysql有没有配置数据库连接，启动工程会报错，所以这里可以先不选mysql和jpa</font><br><img src="/2018/03/28/springboot/step_3.jpg" width="500"></p>
 <h3 id="项目创建完成"><a href="#项目创建完成" class="headerlink" title="项目创建完成"></a>项目创建完成</h3><p> 最后选择下一步，在选择好项目路径后项目就创建完了，idea会自己去下载pom中的jar包，等待下载完成，项目就创建好了。</p>
-<h3 id="添加额外库"><a href="#添加额外库" class="headerlink" title="添加额外库"></a>添加额外库</h3><p>在项目创建完成后，需要添加一个阿里的数据源框架，maven坐标为：</p>
-<pre><code>&lt;dependency&gt;
-    &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
-    &lt;artifactId&gt;druid&lt;/artifactId&gt;
-    &lt;version&gt;1.0.19&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre><p>  最后完整的pom文件为</p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
-    xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
-    &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
-
-    &lt;groupId&gt;com.suruns&lt;/groupId&gt;
-    &lt;artifactId&gt;demo&lt;/artifactId&gt;
-    &lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;
-    &lt;packaging&gt;jar&lt;/packaging&gt;
-
-    &lt;name&gt;demo&lt;/name&gt;
-    &lt;description&gt;Demo project for Spring Boot&lt;/description&gt;
-
-    &lt;parent&gt;
-        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-        &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
-        &lt;version&gt;2.0.0.RELEASE&lt;/version&gt;
-        &lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;
-    &lt;/parent&gt;
-
-    &lt;properties&gt;
-        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
-        &lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;
-        &lt;java.version&gt;1.8&lt;/java.version&gt;
-    &lt;/properties&gt;
-
-    &lt;dependencies&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-            &lt;artifactId&gt;spring-boot-starter-data-jpa&lt;/artifactId&gt;
-        &lt;/dependency&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-            &lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;/artifactId&gt;
-        &lt;/dependency&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-            &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
-        &lt;/dependency&gt;
-
-        &lt;dependency&gt;
-            &lt;groupId&gt;mysql&lt;/groupId&gt;
-            &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
-            &lt;scope&gt;runtime&lt;/scope&gt;
-        &lt;/dependency&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
-            &lt;artifactId&gt;lombok&lt;/artifactId&gt;
-            &lt;optional&gt;true&lt;/optional&gt;
-        &lt;/dependency&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-            &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
-            &lt;scope&gt;test&lt;/scope&gt;
-        &lt;/dependency&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
-            &lt;artifactId&gt;druid&lt;/artifactId&gt;
-            &lt;version&gt;1.0.19&lt;/version&gt;
-        &lt;/dependency&gt;
-    &lt;/dependencies&gt;
-
-    &lt;build&gt;
-        &lt;plugins&gt;
-            &lt;plugin&gt;
-                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
-                &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
-            &lt;/plugin&gt;
-        &lt;/plugins&gt;
-    &lt;/build&gt;
-&lt;/project&gt;
-</code></pre><p>基础项目创建完成，下面开始数据库相关配置。</p>
+<h3 id="添加额外库"><a href="#添加额外库" class="headerlink" title="添加额外库"></a>添加额外库</h3><p>在项目创建完成后，需要添加一个阿里的数据源框架，maven坐标为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">	&lt;groupId&gt;com.alibaba&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;druid&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;1.0.19&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure><br>  最后完整的pom文件为<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">    &lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">    	xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;</span><br><span class="line">    	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</span><br><span class="line">    </span><br><span class="line">    	&lt;groupId&gt;com.suruns&lt;/groupId&gt;</span><br><span class="line">    	&lt;artifactId&gt;demo&lt;/artifactId&gt;</span><br><span class="line">    	&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;</span><br><span class="line">    	&lt;packaging&gt;jar&lt;/packaging&gt;</span><br><span class="line">    </span><br><span class="line">    	&lt;name&gt;demo&lt;/name&gt;</span><br><span class="line">    	&lt;description&gt;Demo project for Spring Boot&lt;/description&gt;</span><br><span class="line">    </span><br><span class="line">    	&lt;parent&gt;</span><br><span class="line">    		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    		&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</span><br><span class="line">    		&lt;version&gt;2.0.0.RELEASE&lt;/version&gt;</span><br><span class="line">    		&lt;relativePath/&gt; &lt;!-- lookup parent from repository --&gt;</span><br><span class="line">    	&lt;/parent&gt;</span><br><span class="line">    </span><br><span class="line">    	&lt;properties&gt;</span><br><span class="line">    		&lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</span><br><span class="line">    		&lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;</span><br><span class="line">    		&lt;java.version&gt;1.8&lt;/java.version&gt;</span><br><span class="line">    	&lt;/properties&gt;</span><br><span class="line">    </span><br><span class="line">    	&lt;dependencies&gt;</span><br><span class="line">    		&lt;dependency&gt;</span><br><span class="line">    			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    			&lt;artifactId&gt;spring-boot-starter-data-jpa&lt;/artifactId&gt;</span><br><span class="line">    		&lt;/dependency&gt;</span><br><span class="line">    		&lt;dependency&gt;</span><br><span class="line">    			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    			&lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;/artifactId&gt;</span><br><span class="line">    		&lt;/dependency&gt;</span><br><span class="line">    		&lt;dependency&gt;</span><br><span class="line">    			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    			&lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;</span><br><span class="line">    		&lt;/dependency&gt;</span><br><span class="line">    </span><br><span class="line">    		&lt;dependency&gt;</span><br><span class="line">    			&lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">    			&lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">    			&lt;scope&gt;runtime&lt;/scope&gt;</span><br><span class="line">    		&lt;/dependency&gt;</span><br><span class="line">    		&lt;dependency&gt;</span><br><span class="line">    			&lt;groupId&gt;org.projectlombok&lt;/groupId&gt;</span><br><span class="line">    			&lt;artifactId&gt;lombok&lt;/artifactId&gt;</span><br><span class="line">    			&lt;optional&gt;true&lt;/optional&gt;</span><br><span class="line">    		&lt;/dependency&gt;</span><br><span class="line">    		&lt;dependency&gt;</span><br><span class="line">    			&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    			&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</span><br><span class="line">    			&lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">    		&lt;/dependency&gt;</span><br><span class="line">    		&lt;dependency&gt;</span><br><span class="line">    			&lt;groupId&gt;com.alibaba&lt;/groupId&gt;</span><br><span class="line">    			&lt;artifactId&gt;druid&lt;/artifactId&gt;</span><br><span class="line">    			&lt;version&gt;1.0.19&lt;/version&gt;</span><br><span class="line">    		&lt;/dependency&gt;</span><br><span class="line">    	&lt;/dependencies&gt;</span><br><span class="line">    </span><br><span class="line">    	&lt;build&gt;</span><br><span class="line">    		&lt;plugins&gt;</span><br><span class="line">    			&lt;plugin&gt;</span><br><span class="line">    				&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">    				&lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">    			&lt;/plugin&gt;</span><br><span class="line">    		&lt;/plugins&gt;</span><br><span class="line">    	&lt;/build&gt;</span><br><span class="line">    &lt;/project&gt;</span><br></pre></td></tr></table></figure><br>基础项目创建完成，下面开始数据库相关配置。</p>
 
     </article>
     <!-- 前后页  -->
     <ul class="post-paginator">
         <li class="next">
+            
+                <div class="nextSlogan">Next Post</div>
+                <a href= "/2018/03/29/springboot-2/" title= IDEA创建SpringBoot项目（二） >
+                    <div class="nextTitle">IDEA创建SpringBoot项目（二）</div>
+                </a>
             
         </li>
         <li class="previous">
@@ -472,7 +397,7 @@ height:50vh;
 <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
     var gitment = new Gitment({
-        // id: "IDEA创建SpringBoot项目", // 可选。默认为 location.href
+        // id: "IDEA创建SpringBoot项目（一）", // 可选。默认为 location.href
         owner: 'suruns',
         repo: 'blog_comments',
         oauth: {
@@ -619,7 +544,25 @@ top:50vh;
     
     
     
-    <div class="total-archive"> Total : 3 </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 5 </div>
     
     <div class="post-archive">
     
@@ -631,7 +574,17 @@ top:50vh;
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">03/28</span><a class="archive-post-title" href= "/2018/03/28/springboot/" >IDEA创建SpringBoot项目</a>
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2018/03/29/springboot-3/" >IDEA创建SpringBoot项目（三）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/29</span><a class="archive-post-title" href= "/2018/03/29/springboot-2/" >IDEA创建SpringBoot项目（二）</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/28</span><a class="archive-post-title" href= "/2018/03/28/springboot/" >IDEA创建SpringBoot项目（一）</a>
         </li>
     
     
@@ -649,8 +602,6 @@ top:50vh;
         <div class="sidebar-panel-tags">
     <div class="sidebar-tags-name">
     
-        <span class="sidebar-tag-name" data-tags="test"><span class="iconfont-archer">&#xe606;</span>test</span>
-    
         <span class="sidebar-tag-name" data-tags="share"><span class="iconfont-archer">&#xe606;</span>share</span>
     
         <span class="sidebar-tag-name" data-tags="springboot"><span class="iconfont-archer">&#xe606;</span>springboot</span>
@@ -658,6 +609,8 @@ top:50vh;
         <span class="sidebar-tag-name" data-tags="java"><span class="iconfont-archer">&#xe606;</span>java</span>
     
         <span class="sidebar-tag-name" data-tags="web"><span class="iconfont-archer">&#xe606;</span>web</span>
+    
+        <span class="sidebar-tag-name" data-tags="test"><span class="iconfont-archer">&#xe606;</span>test</span>
     
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
@@ -691,6 +644,10 @@ jsonContent:
 </div>
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="杂"><span class="iconfont-archer">&#xe60a;</span>杂</span>
+    
+        <span class="sidebar-category-name" data-categories="springboot"><span class="iconfont-archer">&#xe60a;</span>springboot</span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
