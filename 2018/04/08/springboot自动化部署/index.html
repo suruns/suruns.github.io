@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="test," />
+  <meta name="keywords" content="springboot,java,web,部署," />
 
 
 
@@ -79,18 +79,27 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta name="keywords" content="test">
+<meta name="description" content="在当前开发领域，devops和敏捷开发已经成为主流，这其中自动化部署就有很大的作用,本文讲解一下怎么使用spring boot+docker+jenkins实现自动化部署。 环境准备 需要部署的centos服务器一台，需要安装docker，本文中称为远程服务器; 需要安装git服务器，jenkins服务器的centos服务器一台，需要安装maven环境，本文中称为本地服务器; 编写代码的电脑一台；">
+<meta name="keywords" content="springboot,java,web,部署">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://suruns.com/2018/03/24/hello-world/index.html">
+<meta property="og:title" content="springboot+docker+jenkins自动化部署(1)">
+<meta property="og:url" content="http://suruns.com/2018/04/08/springboot自动化部署/index.html">
 <meta property="og:site_name" content="Suruns Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="在当前开发领域，devops和敏捷开发已经成为主流，这其中自动化部署就有很大的作用,本文讲解一下怎么使用spring boot+docker+jenkins实现自动化部署。 环境准备 需要部署的centos服务器一台，需要安装docker，本文中称为远程服务器; 需要安装git服务器，jenkins服务器的centos服务器一台，需要安装maven环境，本文中称为本地服务器; 编写代码的电脑一台；">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-29T09:43:05.506Z">
+<meta property="og:image" content="http://suruns.com/2018/04/08/springboot自动化部署/flowchart1.png">
+<meta property="og:image" content="http://suruns.com/2018/04/08/springboot自动化部署/step1_1.jpg">
+<meta property="og:image" content="http://suruns.com/2018/04/08/springboot自动化部署/step1_2.jpg">
+<meta property="og:image" content="http://suruns.com/2018/04/08/springboot自动化部署/step1_3.jpg">
+<meta property="og:image" content="http://suruns.com/2018/04/08/springboot自动化部署/step1_4_a.jpg">
+<meta property="og:image" content="http://suruns.com/2018/04/08/springboot自动化部署/step1_4_b.jpg">
+<meta property="og:image" content="http://suruns.com/2018/04/08/springboot自动化部署/step1_4_c.jpg">
+<meta property="og:image" content="http://suruns.com/2018/04/08/springboot自动化部署/step2.jpg">
+<meta property="og:updated_time" content="2018-04-18T03:35:07.268Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="springboot+docker+jenkins自动化部署(1)">
+<meta name="twitter:description" content="在当前开发领域，devops和敏捷开发已经成为主流，这其中自动化部署就有很大的作用,本文讲解一下怎么使用spring boot+docker+jenkins实现自动化部署。 环境准备 需要部署的centos服务器一台，需要安装docker，本文中称为远程服务器; 需要安装git服务器，jenkins服务器的centos服务器一台，需要安装maven环境，本文中称为本地服务器; 编写代码的电脑一台；">
+<meta name="twitter:image" content="http://suruns.com/2018/04/08/springboot自动化部署/flowchart1.png">
 
 
 
@@ -120,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://suruns.com/2018/03/24/hello-world/"/>
+  <link rel="canonical" href="http://suruns.com/2018/04/08/springboot自动化部署/"/>
 
 
 
 
 
-  <title>Hello World | Suruns Blog</title>
+  <title>springboot+docker+jenkins自动化部署(1) | Suruns Blog</title>
   
 
 
@@ -283,7 +292,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://suruns.com/2018/03/24/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://suruns.com/2018/04/08/springboot自动化部署/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Suruns">
@@ -300,7 +309,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World</h1>
+          <h1 class="post-title" itemprop="name headline">springboot+docker+jenkins自动化部署(1)</h1>
         
 
         <div class="post-meta">
@@ -312,8 +321,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-24T16:02:00+08:00">
-                2018-03-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-08T18:11:18+08:00">
+                2018-04-08
               </time>
             
 
@@ -335,8 +344,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/杂/" itemprop="url" rel="index">
-                    <span itemprop="name">杂</span>
+                  <a href="/categories/springboot/" itemprop="url" rel="index">
+                    <span itemprop="name">springboot</span>
                   </a>
                 </span>
 
@@ -352,7 +361,7 @@
 
           
           
-             <span id="/2018/03/24/hello-world/" class="leancloud_visitors" data-flag-title="Hello World">
+             <span id="/2018/04/08/springboot自动化部署/" class="leancloud_visitors" data-flag-title="springboot+docker+jenkins自动化部署(1)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -383,15 +392,18 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <p>在当前开发领域，devops和敏捷开发已经成为主流，这其中自动化部署就有很大的作用,本文讲解一下怎么使用spring boot+docker+jenkins实现自动化部署。</p>
+<h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><p> 需要部署的centos服务器一台，需要安装docker，本文中称为远程服务器;<br> 需要安装git服务器，jenkins服务器的centos服务器一台，需要安装maven环境，本文中称为本地服务器;<br> 编写代码的电脑一台；需要安装git。</p>
+<h3 id="自动化部署流程图"><a href="#自动化部署流程图" class="headerlink" title="自动化部署流程图"></a>自动化部署流程图</h3> <img src="/2018/04/08/springboot自动化部署/flowchart1.png" width="500">
+<h3 id="一-配置jenkins"><a href="#一-配置jenkins" class="headerlink" title="一.配置jenkins"></a>一.配置jenkins</h3><h4 id="1-配置maven环境"><a href="#1-配置maven环境" class="headerlink" title="1.配置maven环境"></a>1.配置maven环境</h4><p>进入jenkins系统管理&gt;系统设置界面，配置maven属性，主要为maven仓库位置：<br> <img src="/2018/04/08/springboot自动化部署/step1_1.jpg" width="800"></p>
+<h4 id="2-配置远程服务器"><a href="#2-配置远程服务器" class="headerlink" title="2.配置远程服务器"></a>2.配置远程服务器</h4><p> 由于需要向远程服务器推送jar包以及执行相关命令，所以jenkins也需要配置一下远程服务器的ssh连接：<br>  <img src="/2018/04/08/springboot自动化部署/step1_2.jpg" width="800"><br>  对应位置应该填写：<br>  1：服务器密码<br>  2：服务器名字（随便写，只是一个标识符）<br>  3：服务器ip<br>  4：需要登陆的用户名<br>  5：上传文件的路径前缀</p>
+<h4 id="3-新建任务"><a href="#3-新建任务" class="headerlink" title="3.新建任务"></a>3.新建任务</h4><p> 在jenkins基础环境配置好后，新建一个任务，注意要选择maven风格：<br> <img src="/2018/04/08/springboot自动化部署/step1_3.jpg" width="800"></p>
+<h4 id="4-配置任务"><a href="#4-配置任务" class="headerlink" title="4.配置任务"></a>4.配置任务</h4><p>  新建任务完成后会进入任务配置界面，这个界面比较大，我们主要说一下比较重要的。</p>
+<h5 id="a-配置源码地址"><a href="#a-配置源码地址" class="headerlink" title="a.配置源码地址"></a>a.配置源码地址</h5><p>这里配置Jenkins拉取git源码的位置以及分支：<br> <img src="/2018/04/08/springboot自动化部署/step1_4_a.jpg" width="800"></p>
+<h5 id="b-配置触发器"><a href="#b-配置触发器" class="headerlink" title="b.配置触发器"></a>b.配置触发器</h5><p> 还需要配置一下触发器，在上传代码到git后，就会触发jenkins执行构建操作，下面第一个选项指使用git的钩子触发，第二个则写入触发的分支。如我填入的是develop表示该分支有新的提交时会触发jenkins进行自动化部署。注意第一个框框里面URL后面的连接需要保存一下，下面有用：<br>  <img src="/2018/04/08/springboot自动化部署/step1_4_b.jpg" width="800"></p>
+<h5 id="c-配置mvn命令"><a href="#c-配置mvn命令" class="headerlink" title="c.配置mvn命令"></a>c.配置mvn命令</h5><p> 在构建里面填写需要执行的maven命令，不要写mvn！不要写mvn！不要写mvn！该命令会自动添加mvn，不需要自己写。<br>  该命令意思为清除上次构建生成的文件，然后在打包一个新的文件，同时跳过单元测试<br>  <img src="/2018/04/08/springboot自动化部署/step1_4_c.jpg" width="800"></p>
+<h3 id="二-配置git"><a href="#二-配置git" class="headerlink" title="二.配置git"></a>二.配置git</h3><p> 将上一布中的链接保存后，需要填入git里面,如下所示，红色框从上至下一次表示：<br> 1，2为配置所在页面；3为链接填入位置，填好连接后点击4号框的按钮，点击后会出现5号框的按钮，同时该按钮左边的链接就是填入的链接，此时，点击test按钮，如果成功会出现上面的白色蓝条。<br> <img src="/2018/04/08/springboot自动化部署/step2.jpg" width="800"></p>
+<p> 好了，到此为止，从git到jenkins的配置已经完成，已经实现了git提交代码，jenkins自动拉取代码，并执行自动化部署命令的过程。至于如何部署jar包到docker，请看下回分解…</p>
 
       
     </div>
@@ -438,7 +450,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/test/" rel="tag"># test</a>
+            <a href="/tags/springboot/" rel="tag"># springboot</a>
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+            <a href="/tags/web/" rel="tag"># web</a>
+          
+            <a href="/tags/部署/" rel="tag"># 部署</a>
           
         </div>
       
@@ -451,14 +469,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/03/29/springboot-3/" rel="next" title="IDEA创建SpringBoot项目（三）">
+                <i class="fa fa-chevron-left"></i> IDEA创建SpringBoot项目（三）
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/24/share/" rel="prev" title="分享">
-                分享 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/08/springboot自动化部署-2/" rel="prev" title="springboot+docker+jenkins自动化部署(2)">
+                springboot+docker+jenkins自动化部署(2) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -595,7 +617,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#环境准备"><span class="nav-number">1.</span> <span class="nav-text">环境准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动化部署流程图"><span class="nav-number">2.</span> <span class="nav-text">自动化部署流程图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一-配置jenkins"><span class="nav-number">3.</span> <span class="nav-text">一.配置jenkins</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-配置maven环境"><span class="nav-number">3.1.</span> <span class="nav-text">1.配置maven环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-配置远程服务器"><span class="nav-number">3.2.</span> <span class="nav-text">2.配置远程服务器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-新建任务"><span class="nav-number">3.3.</span> <span class="nav-text">3.新建任务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-配置任务"><span class="nav-number">3.4.</span> <span class="nav-text">4.配置任务</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#a-配置源码地址"><span class="nav-number">3.4.1.</span> <span class="nav-text">a.配置源码地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#b-配置触发器"><span class="nav-number">3.4.2.</span> <span class="nav-text">b.配置触发器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#c-配置mvn命令"><span class="nav-number">3.4.3.</span> <span class="nav-text">c.配置mvn命令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二-配置git"><span class="nav-number">4.</span> <span class="nav-text">二.配置git</span></a></li></ol></div>
             
 
           </div>
